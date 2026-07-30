@@ -449,13 +449,13 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     //Moaner Custom Profiles
     //bunny
     M_MOANER_bunnyMoans = {
-        "hot": ["o... Hoiink\u2665", "YuuumM\u2665"],
-        "medium": ["hoinK\u2665", "huumm", "..hooink"],
-        "light": ["honk\u2665", "Hum!", "yum", "hoo\u2665"],
-        "low": ["hoo", "ho\u2665", "ho", "\u2665yum\u2665", "hum\u2665"],
-        "orgasm": ["Yum...Hum...YuuuuuMMMM!", "Hooiiinnk... Huuum... Yuuum!", "honkk... hoooiiink.... hoiiiiinnk!"],
-        "pain": [],
-        "tickle": []
+            "hot": ["-O-oh...-", "-M-mmph!-", "-Mmh... yes...-", "-A-ah...♥-", "-M-mmh... more!-", "-O-oh... mmh...-", "-Mmh... harder!-", "-M-mm... ah...♥-", "-Mgh... yes!-", "-Mmgh...♥-", "-Ah... m-mgh!-", "-Mgh... m-mm...-"],
+    "medium": ["-m-mm-", "-a-ah-", "-mhm...♥-", "-O-oh...-", "-M-mm...-", "-Ah...♥-", "-M-mhm...♥-", "-M-yeah...-", "-M-mmh...-", "-Ah-h...♥-", "-Mgh...♥-", "-M-mgh...-", "-Mm... ah...-"],
+    "light": ["-Ah!-", "-mh...-", "-oh!♥-", "-mh...♥-", "-Uh!-", "-m-m...♥-", "-Oh!-", "-Hm...♥-", "-Ah!-", "-M-m...-", "-Mgh...-", "-Oh...♥-", "-Ah... mh...-"],
+    "low": ["-mh...-", "-oh...♥-", "-ah...-", "-...♥-", "-m-m...-", "-mm...♥-", "-...mh...-", "-ah...♥-", "-uf...-", "-♥...-", "-m-m-m...-", "-mgh...-", "-hm...-"],
+    "orgasm": ["~M-mmph... M-Mmh... Hhhmmmm!~", "~O-o-oh... M-mmh... OooOOOOh!!~", "~M-mmhnn... Ahm... Ah!!~", "~A-ah!.. M-mmh!.. AAAAH!!~", "~Mh... M-mm... MMMMH!!~", "~Oh... O-O-Oh... OOOOOH!!~", "~M-mm... A-ah!.. More... AAAH!!~", "~Mgh... Ah!.. MMMGH!!~", "~M-mgh... A-ah... MGH!!~", "~Oh... mgh... OOOH!!~"],
+    "pain": ["-Ah!-", "-A-a-ouch!-", "-A-a-ah!-", "-O-uch...-", "-Ow...-", "-H-hurts!-", "-Ah-ah!-", "-Oh!-", "-M-mmh!-", "-A-ah!-", "-U-uh...-", "-O-oh...-", "-Mgh!-"],
+    "tickle": ["~Ha-ha-ha!~", "~M-mmhahaha!~", "~Mu-ha-ha...~", "~Ha!-Ha!~", "~Hi-hi-hi!~", "~Oh ha-ha!~", "~Mh-ha-ha!~", "~Tickles!~", "~A-ha-hah!~", "~Ha-ha... stop!~", "~Hi-hi...♥~", "~M-mm... hi-hi!~"]
     }
     M_MOANER_addMoansProfile("bunny", M_MOANER_bunnyMoans);
 
