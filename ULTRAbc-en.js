@@ -1,18 +1,19 @@
 // ==UserScript==
 // @name ULTRAbc-en
 // @namespace https://www.bondageprojects.com/
-// @version 6.1.1
+// @version 6.2
 // @description Everything you'll ever need for BC
 // @author Nemesea
 // @match https://bondageprojects.elementfx.com/*
 // @match https://www.bondageprojects.elementfx.com/*
+// @match https://bondageeurope.com/*
+// @match https://www.bondageeurope.com/*
 // @match https://bondage-europe.com/*
 // @match https://www.bondage-europe.com/*
 // @match https://bondage-asia.com/club/*
 // @match https://www.bondage-asia.com/club/*
 // @match https://bondageprojects.com/*
 // @match https://www.bondageprojects.com/*
-// @match http://localhost:*/*
 // @icon data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant none
 // @run-at document-end
@@ -93,8 +94,8 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         return;
     }
 
-    const UBCver = "6.1.1";
-    const UBCver0 = "6.1";
+    const UBCver = "6.2";
+    const UBCver0 = "6.1.1";
     const modApi = bcModSDK.registerMod({
         name: 'ULTRAbc',
         fullName: 'Ultra Bondage Club',
@@ -152,6 +153,9 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     let cextra = false;
     let cfame = 150;
     let cname = "";
+	let cowner1 = "";
+    let cowner2 = 0;
+    let cowner3 = 0;
     let csname = "Introduction";
     let ctitle = "";
     let dogsforbid = false;
@@ -379,14 +383,14 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     let M_MOANER_profileName = "default";
 
     let M_MOANER_defaultMoans = {
-	    "hot": ["О-о-ох...", "М-м-ммх!", "Ммн... да...", "А-а-ах...\u2665", "М-м-мх... ещё!", "О-ох... ммм...", "Ммх... сильнее!", "М-м-м... ах...\u2665", "Мгх... да!", "Ммгх...\u2665", "Ах... м-мгх!", "Мгх... м-м-м..."],
-	    "medium": ["м-м-м", "а-а-ах", "мхм...\u2665", "О-ох...", "М-м-м...", "Ах...\u2665", "М-мхм...\u2665", "Н-да...", "М-м-мх...", "Ах-х...\u2665", "Мгх...\u2665", "М-мгх...", "Мм... ах..."],
-	    "light": ["Ах!", "мх...", "ох!\u2665", "мх...\u2665", "Ух!", "м-м...\u2665", "Ох!", "Хм...\u2665", "Ай!", "М-м...", "Мгх...", "Ох...\u2665", "Ах... мх..."],
-	    "low": ["мх...", "ох...\u2665", "ах...", "...\u2665", "м-м...", "мм...\u2665", "...мх...", "ах...\u2665", "уф...", "\u2665...", "м-м-м...", "мгх...", "хм..."],
-	    "orgasm": ["М-м-ммх... М-Ммх... Хххмммм!", "О-о-о-ох... М-м-мх... ОооООООх!!", "М-м-мхнн... Ахмм... Ах!!", "А-а-ах!.. М-м-мх!.. ААААХ!!", "Мх... М-м-м... ММММХ!!", "Ох... О-О-Ох... ОООООХ!!", "М-м-м... А-ах!.. Ещё... АААХ!!", "Мгх... Ах!.. МММГХ!!", "М-мгх... А-а-ах... МГХ!!", "Ох... мгх... ОООХ!!"],
-	    "pain": ["Ай!", "А-а-ауч!", "А-а-ай!", "О-уч...", "Ау...", "Б-больно!", "Ай-яй!", "Ох!", "М-м-мх!", "А-а-а!", "У-у-у...", "О-о-ох...", "Мгх!"],
-	    "tickle": ["Ха-ха-ха!", "М-м-мхахаха!", "Мх-ха-ха...", "Ха!-Ха!", "Хи-хи-хи!", "Ой ха-ха!", "Мх-ха-ха!", "А-ха-хах!", "Ха-ха... стой..!", "Хи-хи...\u2665", "М-м-м... хи-хи!"]
-	}
+        "hot": ["n... Nyah\u2665", "Oooh", "mmmmmh!", "NYyaaA\u2665"],
+        "medium": ["mm", "aaaah", "nyAh\u2665"],
+        "light": ["nyah\u2665", "Aah!", "mh", "oh!\u2665", "mh\u2665"],
+        "low": ["mh", "\u2665oh\u2665", "ah", "...\u2665"],
+        "orgasm": ["Nya...Ny...NyaaAAaah!", "Mmmmh... MMmh... Hhhmmmm...", "Oooooh... Mmmmh... OooOOOOh!", "Mmmhnn... Nyhmm... Nyah!"],
+        "pain": ["Aie!", "Aoouch!", "Aaaaie!", "Ouch", "Aow"],
+        "tickle": ["Hahaha!", "Mmmmhahaha!", "Muhahah...", "Ha!Ha!"]
+    }
 
     let M_MOANER_customMoans = {
         "hot": [],
@@ -449,13 +453,13 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     //Moaner Custom Profiles
     //bunny
     M_MOANER_bunnyMoans = {
-            "hot": ["-O-oh...-", "-M-mmph!-", "-Mmh... yes...-", "-A-ah...♥-", "-M-mmh... more!-", "-O-oh... mmh...-", "-Mmh... harder!-", "-M-mm... ah...♥-", "-Mgh... yes!-", "-Mmgh...♥-", "-Ah... m-mgh!-", "-Mgh... m-mm...-"],
-    "medium": ["-m-mm-", "-a-ah-", "-mhm...♥-", "-O-oh...-", "-M-mm...-", "-Ah...♥-", "-M-mhm...♥-", "-M-yeah...-", "-M-mmh...-", "-Ah-h...♥-", "-Mgh...♥-", "-M-mgh...-", "-Mm... ah...-"],
-    "light": ["-Ah!-", "-mh...-", "-oh!♥-", "-mh...♥-", "-Uh!-", "-m-m...♥-", "-Oh!-", "-Hm...♥-", "-Ah!-", "-M-m...-", "-Mgh...-", "-Oh...♥-", "-Ah... mh...-"],
-    "low": ["-mh...-", "-oh...♥-", "-ah...-", "-...♥-", "-m-m...-", "-mm...♥-", "-...mh...-", "-ah...♥-", "-uf...-", "-♥...-", "-m-m-m...-", "-mgh...-", "-hm...-"],
-    "orgasm": ["~M-mmph... M-Mmh... Hhhmmmm!~", "~O-o-oh... M-mmh... OooOOOOh!!~", "~M-mmhnn... Ahm... Ah!!~", "~A-ah!.. M-mmh!.. AAAAH!!~", "~Mh... M-mm... MMMMH!!~", "~Oh... O-O-Oh... OOOOOH!!~", "~M-mm... A-ah!.. More... AAAH!!~", "~Mgh... Ah!.. MMMGH!!~", "~M-mgh... A-ah... MGH!!~", "~Oh... mgh... OOOH!!~"],
-    "pain": ["-Ah!-", "-A-a-ouch!-", "-A-a-ah!-", "-O-uch...-", "-Ow...-", "-H-hurts!-", "-Ah-ah!-", "-Oh!-", "-M-mmh!-", "-A-ah!-", "-U-uh...-", "-O-oh...-", "-Mgh!-"],
-    "tickle": ["~Ha-ha-ha!~", "~M-mmhahaha!~", "~Mu-ha-ha...~", "~Ha!-Ha!~", "~Hi-hi-hi!~", "~Oh ha-ha!~", "~Mh-ha-ha!~", "~Tickles!~", "~A-ha-hah!~", "~Ha-ha... stop!~", "~Hi-hi...♥~", "~M-mm... hi-hi!~"]
+        "hot": ["o... Hoiink\u2665", "YuuumM\u2665"],
+        "medium": ["hoinK\u2665", "huumm", "..hooink"],
+        "light": ["honk\u2665", "Hum!", "yum", "hoo\u2665"],
+        "low": ["hoo", "ho\u2665", "ho", "\u2665yum\u2665", "hum\u2665"],
+        "orgasm": ["Yum...Hum...YuuuuuMMMM!", "Hooiiinnk... Huuum... Yuuum!", "honkk... hoooiiink.... hoiiiiinnk!"],
+        "pain": [],
+        "tickle": []
     }
     M_MOANER_addMoansProfile("bunny", M_MOANER_bunnyMoans);
 
@@ -589,6 +593,9 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         cextra = false;
         cfame = 150;
         cname = "";
+		cowner1 = "";
+        cowner2 = 0;
+        cowner3 = 0;
         cskeys = false;
         ctitle = "";
         dogsforbid = false;
@@ -714,6 +721,9 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         cextra = data.cextra;
         cfame = data.cfame;
         cname = data.cname;
+		cowner1 = data.cowner1;
+        cowner2 = data.cowner2;
+        cowner3 = data.cowner3;
         cskeys = data.cskeys;
         ctitle = data.ctitle;
         dogsforbid = data.dogsforbid;
@@ -895,6 +905,9 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
             "cextra": cextra,
             "cfame": cfame,
             "cname": cname,
+            "cowner1": cowner1,
+            "cowner2": cowner2,
+            "cowner3": cowner3,
             "csname": csname,
             "ctitle": ctitle,
             "frname": frname,
@@ -1056,6 +1069,9 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                 if (cextra == null || cextra == undefined) cextra = false;
                 if (cfame == null || cfame == undefined) cfame = 150;
                 if (cname == null || cname == undefined) cname = "";
+				if (cowner1 == null || cowner1 == undefined) cowner1 = "";
+                if (cowner2 == null || cowner2 == undefined) cowner2 = 0;
+                if (cowner3 == null || cowner2 == undefined) cowner3 = 0;
                 if (cskeys == null || cskeys == undefined) cskeys = false;
                 if (csname == null || csname == undefined) csname = "Introduction";
                 if (ctitle == null || ctitle == undefined) ctitle = "";
@@ -3118,13 +3134,8 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     ULTRAChatRoomDrawArousalOverlay(); 
 	ULTRAChatSearchJoin();
 
-    ULTRAAsylumEntranceStartChat();
     ULTRAAsylumMeetingClubCardStart();
     ULTRACafeClubCardStart();
-    ULTRAChatAdminClick();
-    ULTRAChatAdminRun();
-    ULTRAChatRoomClick();
-    ULTRAChatRoomSafewordRevert();
     ULTRAChatRoomSendChat();
 	ULTRAChatRoomTopMenuSync();
     ULTRAClubCardBuilderClick();
@@ -3282,105 +3293,96 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         return next(args);
     });
 
-    async function ULTRAAsylumEntranceStartChat() {
-        modApi.hookFunction('AsylumEntranceStartChat', 4, (args, next) => {
-            if (asylumlimit == true) {
-                ChatRoomStart("Asylum", "", "AsylumEntrance", "Room", "AsylumEntrance", [BackgroundsTagAsylum]);
-            } else {
-                ChatSelectStartSearch(ChatRoomSpaceType.ASYLUM);
-            }
+    modApi.hookFunction('AsylumEntranceStartChat', 4, (args, next) => {
+        if (asylumlimit == true) {
+            ChatRoomStart("Asylum", "", "AsylumEntrance", "Room", "AsylumEntrance", [BackgroundsTagAsylum]);
+        } else {
+            ChatSelectStartSearch(ChatRoomSpaceType.ASYLUM);
             return;
-        });
-    }
+        }
+        return next (args);
+    });
 
-    function ULTRAChatAdminClick() {
-        modApi.hookFunction('ChatAdminClick', 4, (args, next) => {
-            if (ChatAdminCanEdit()) {
-                if (MouseIn(1230, 450, 60, 60)) {
-                    if ((asylumlimit == true) && (ChatSearchSpace == "Asylum")) {
-                        let AsylumList = BackgroundsGenerateList([BackgroundsTagAsylum]);
-                        let listbg = AsylumList.length;
-                        let Roll = Math.floor(Math.random() * listbg);
-                        if (Roll == 0) Roll = 1;
-                        let name = AsylumList[Roll - 1].Name;
-                        ChatAdminData.Background = ChatAdminBackgroundList[Roll];
-                    } else {
-                        let listbg = BackgroundsList.length;
-                        let Roll = Math.floor(Math.random() * listbg);
-                        if (Roll == 0) Roll = 1;
-                        let name = BackgroundsList[Roll - 1].Name;
-                        ChatAdminData.Background = ChatAdminBackgroundList[Roll];
-                    }
-                    return;
+	modApi.hookFunction('ChatAdminClick', 4, (args, next) => {
+        if (ChatAdminCanEdit()) {
+            if (MouseIn(1230, 450, 60, 60)) {
+                if ((asylumlimit == true) && (ChatSearchSpace == "Asylum")) {
+                    let AsylumList = BackgroundsGenerateList([BackgroundsTagAsylum]);
+                    let listbg = AsylumList.length;
+                    let Roll = Math.floor(Math.random() * listbg);
+                    if (Roll == 0) Roll = 1;
+                    let name = AsylumList[Roll - 1].Name;
+                    ChatAdminData.Background = ChatAdminBackgroundList[Roll];
+                } else {
+                    let listbg = BackgroundsList.length;
+                    let Roll = Math.floor(Math.random() * listbg);
+                    if (Roll == 0) Roll = 1;
+                    let name = BackgroundsList[Roll - 1].Name;
+                    ChatAdminData.Background = ChatAdminBackgroundList[Roll];
                 }
+                return;
             }
-            next(args);
-        });
-    }
+        }
+        return next(args);
+    });
 
-    async function ULTRAChatAdminRun() {
-        modApi.hookFunction('ChatAdminRun', 4, (args, next) => {
-            TintsEffect();
-            ChatAdminGameList = ["", "ClubCard", "LARP", "MagicBattle", "GGTS", "Prison"];
-            if (ChatAdminCanEdit()) {
-                DrawButton(1230, 450, 60, 60, "", "White", "", "Random background");
-            } else {
-                DrawButton(1230, 450, 60, 60, "", "Gray", "", "Random background");
-            }
+    modApi.hookFunction('ChatAdminRun', 4, async (args, next) => {
+        TintsEffect();
+        ChatAdminGameList = ["", "ClubCard", "LARP", "MagicBattle", "GGTS", "Prison"];
+        if (ChatAdminCanEdit()) {
+            DrawButton(1230, 450, 60, 60, "", "White", "", "Random background");
             DrawImageResize("Icons/Random.png", 1230, 450, 60, 60);
-            next(args);
-        });
-    }
+        }
+        return next(args);
+    });
 
-    function ULTRAChatRoomClick() {
-        modApi.hookFunction('ChatRoomClick', 4, (args, next) => {
-            if (extbuttons == true) {
-                if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 270) && (MouseY < 315)) {
-                    ExtClick();
-                    return;
-                }
+	modApi.hookFunction('ChatRoomClick', 4, (args, next) => {
+        if (extbuttons == true) {
+            if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 270) && (MouseY < 315)) {
+                ExtClick();
+                return;
             }
-            if ((sosbuttons == true) && (noescape == false)) {
-                if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 315) && (MouseY < 360)) {
-                    let msg = "Magical lasers make disappear all bindings and toys on " + tmpname + "'s body.";
-                    if (Totalrelease != undefined) {
-                        if (Totalrelease != "") {
-                            if (Totalrelease.startsWith("\u0027")) {
-                                msg = tmpname + Totalrelease;
-                            } else {
-                                msg = tmpname + ' '.repeat(1) + Totalrelease;
-                            }
+        }
+        if ((sosbuttons == true) && (noescape == false)) {
+            if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 315) && (MouseY < 360)) {
+                let msg = "Magical lasers make disappear all bindings and toys on " + tmpname + "'s body.";
+                if (Totalrelease != undefined) {
+                    if (Totalrelease != "") {
+                        if (Totalrelease.startsWith("\u0027")) {
+                            msg = tmpname + Totalrelease;
+                        } else {
+                            msg = tmpname + ' '.repeat(1) + Totalrelease;
                         }
                     }
-                    if (Totalrelease != "no message") publicmsg(msg);
-                    SosClick();
-                    return;
                 }
+                if (Totalrelease != "no message") publicmsg(msg);
+                SosClick();
+                return;
             }
-            if ((outbuttons == true) && (noescape == false)) {
-                if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 360) && (MouseY < 405)) {
-                    if (slowleave == true) {
-                        let msg = "" + tmpname + " slowly heads for the door.";
-                        publicmsg(msg);
-                        setTimeout(function() {
-                            OutChat();
-                        }, 15000);
-                        return;
-                    } else {
+        }
+        if ((outbuttons == true) && (noescape == false)) {
+            if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 360) && (MouseY < 405)) {
+                if (slowleave == true) {
+                    let msg = "" + tmpname + " slowly heads for the door.";
+                    publicmsg(msg);
+                    setTimeout(function() {
                         OutChat();
-                    }
+                    }, 15000);
+                } else {
+                    OutChat();
                 }
+                return;
             }
-            if (rglbuttons == true) {
-                if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 405) && (MouseY < 450)) {
-                    RealGarblingLevel();
-                    return;
-                }
+        }
+        if (rglbuttons == true) {
+            if ((MouseX >= 955) && (MouseX < 1000) && (MouseY >= 405) && (MouseY < 450)) {
+                RealGarblingLevel();
+                return;
             }
-            next(args);
-        });
-    }
-
+        }
+        return next(args);
+    });
+ 
 	modApi.hookFunction('ChatRoomKeyDown', 4, (args, next) => {
         const ret = next(args);
         if ((hotkeys == true) && (noescape == false)) {
@@ -3500,35 +3502,23 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         return next(args);
     });
 
-    function ULTRAChatRoomSafewordRevert() {
-        modApi.hookFunction('ChatRoomSafewordRevert', 4, (args, next) => {
-            if (ChatSearchSafewordAppearance != null) {
-                Player.Appearance = ChatSearchSafewordAppearance.slice(0);
-                Player.ActivePoseMapping = ChatSearchSafewordPose;
-                CharacterRefresh(Player);
-                ChatRoomCharacterUpdate(Player);
-                if (silsafe == false) {
-                    const Dictionary = new DictionaryBuilder()
-                        .sourceCharacter(Player)
-                        .build();
-                    ServerSend("ChatRoomChat", {
-                        Content: "ActionActivateSafewordRevert",
-                        Type: "Action",
-                        Dictionary
-                    });
-                }
-                if ((Player.AllowedInteractions < AllowedInteractions.OwnerLoversWhitelistOnly) && (fixperm == false)) {
-                    Player.AllowedInteractions = AllowedInteractions.OwnerLoversWhitelistOnly;
-                    ServerAccountUpdate.QueueData({
-                        AllowedInteractions: Player.AllowedInteractions,
-                        ItemPermission: Player.AllowedInteractions
-                    }, true);
-                    setTimeout(() => ChatRoomCharacterUpdate(Player), 5000);
-                }
-            }
-            return;
-        });
-    }
+    modApi.patchFunction(
+        "ChatRoomSafewordRelease", {
+            'ServerSend("ChatRoomChat", { Content: "ActionActivateSafewordRelease", Type: "Action", Dictionary });':
+             'if (Player.UBC.ubcSettings.silsafe == false) ServerSend("ChatRoomChat", { Content: "ActionActivateSafewordRelease", Type: "Action", Dictionary });',
+        }
+    );
+
+    modApi.patchFunction(
+        "ChatRoomSafewordRevert", {
+            'ChatRoomCharacterUpdate(Player);':
+            'ChatRoomCharacterUpdate(Player); if (Player.UBC.ubcSettings.silsafe == false) {',
+            'ServerSend("ChatRoomChat", { Content: "ActionActivateSafewordRevert", Type: "Action", Dictionary });':
+            'ServerSend("ChatRoomChat", { Content: "ActionActivateSafewordRevert", Type: "Action", Dictionary }); }',
+            'if (Player.AllowedInteractions < AllowedInteractions.OwnerLoversWhitelistOnly) {':
+            'if ((Player.AllowedInteractions < AllowedInteractions.OwnerLoversWhitelistOnly) && (Player.UBC.ubcSettings.fixperm == false)) {',
+        }
+    );
 
     async function ULTRAChatRoomSendChat() {
         modApi.hookFunction('ChatRoomSendChat', 4, (args, next) => {
@@ -3929,7 +3919,7 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                         this.AutoJoinOn = true;
                         setTimeout(function() {
                             AutoJoin()
-                        }, 1300);
+                        }, 3600);
                         ChatSearchLastQueryJoinTime = CommonTime();
                         ChatSearchLastQueryJoin = RoomName;
                         ServerSend("ChatRoomJoin", {
@@ -5598,193 +5588,6 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
 
     modApi.hookFunction('WheelFortuneRun', 4, (args, next) => {
         TintsEffect();
-        return next(args);
-    });
-
-    //Wardrobe
-	modApi.hookFunction('AppearanceClick', 4, (args, next) => {
-        let C = CharacterAppearanceSelection;
-        if (CharacterAppearanceMode == "Wardrobe") {
-            if (nowrbuttons == false) {
-                if ((MouseX >= 1150) && (MouseX < 1240) && (MouseY >= 25) && (MouseY < 115)) {
-                    wrname = "Dressing";
-                    M_MOANER_saveControls();
-                    ElementRemove("InputWardrobeName");
-                    CommonSetScreen("Character", "Appearance");
-                }
-                if ((MouseX >= 1150) && (MouseX < 1240) && (MouseY >= 130) && (MouseY < 220)) {
-                    if (BackgroundsList != undefined) {
-                        let listbg = BackgroundsList.length;
-                        let Roll = Math.floor(Math.random() * listbg);
-                        if (Roll == 0) Roll = 1;
-                        let name = BackgroundsList[Roll - 1].Name;
-                        wrname = name;
-                        M_MOANER_saveControls();
-                        ElementRemove("InputWardrobeName");
-                        CommonSetScreen("Character", "Appearance");
-                    }
-                }
-                if ((MouseX >= 1150) && (MouseX < 1240) && (MouseY >= 235) && (MouseY < 325)) {
-                    let backgrounds = BackgroundsTagList;
-                    BackgroundSelectionMake(backgrounds, "", (Name, setBackground) => {
-                        if (setBackground) {
-                            wrname = Name;
-                            M_MOANER_saveControls();
-                        }
-                        ElementRemove("InputWardrobeName");
-                        CommonSetScreen("Character", "Appearance");
-                    });
-                }
-            }
-            if ((MouseX >= 1510) && (MouseX < 1610) && (MouseY >= 240) && (MouseY < 290)) {
-                if (C.OnlineSharedSettings.UBC != undefined) {
-                    if (ServerPlayerIsInChatRoom()) {
-                        if ((C.Nickname == '') || (C.Nickname == undefined)) {
-                            tgpname = C.Name;
-                        } else {
-                            tgpname = C.Nickname;
-                        }
-                        if ((tmpname != tgpname) && (IsTargetProtected(C))) {
-                            let msg = "UBC Export is not possible because " + tgpname + " has enabled the Uwall protection.";
-                            infomsg(msg);
-                        } else {
-                            let appall = new Array();
-                            C.Appearance.forEach(item => {
-                                let app = new Array();
-                                app.push(item.Asset.Name);
-                                app.push(item.Asset.Group.Name);
-                                app.push(item.Color);
-                                app.push(item.Difficulty);
-                                app.push(item.Craft);
-                                app.push(false);
-                                //Do not remove this line. It is for the compatibility with bcg.
-                                appall.push(app);
-                            });
-                            ChatRoomSendLocal(
-                                "<p style='background-color:#5fbd7a'>ULTRAbc: Appearance saved.</p>\n" +
-                                btoa(encodeURI(JSON.stringify(appall)))
-                            );
-                        }
-                    }
-                }
-                DialogLeave();
-            }
-            if ((MouseX >= 1630) && (MouseX < 1730) && (MouseY >= 240) && (MouseY < 290)) {
-                let appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                if (C.OnlineSharedSettings.UBC != undefined) {
-                    if ((C.Nickname == '') || (C.Nickname == undefined)) {
-                        tgpname = C.Name;
-                    } else {
-                        tgpname = C.Nickname;
-                    }
-                    if ((tmpname != tgpname) && (IsTargetProtected(C))) {
-                        let msg = "UBC Import is not possible because " + tgpname + " has enabled the Uwall protection.";
-                        infomsg(msg);
-                    } else {
-                        for (let A = C.Appearance.length - 1; A >= 0; A--)
-                            if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
-                                if (!(echolevel2.includes(C.Appearance[A].Asset.Group.Name))) {
-                                    InventoryRemove(C, C.Appearance[A].Asset.Group.Name);
-                                }
-                            }
-                        CharacterReleaseNoLock(C);
-                        let appobj = JSON.parse(decodeURI(atob(appinp)));
-                        appobj.forEach(itemstr => {
-                            if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
-                                if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                                    InventoryRemove(C, itemstr[1]);
-                                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                                }
-                            } else if (!(echolevel2.includes(itemstr[1]))) {
-                                InventoryRemove(C, itemstr[1]);
-                                InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                            }
-                        });
-                        CharacterRefresh(C, false);
-                    }
-                }
-                DialogLeave();
-            }
-            if ((MouseX >= 1750) && (MouseX < 1850) && (MouseY >= 240) && (MouseY < 290)) {
-                let appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                if (C.OnlineSharedSettings.UBC != undefined) {
-                    if ((C.Nickname == '') || (C.Nickname == undefined)) {
-                        tgpname = C.Name;
-                    } else {
-                        tgpname = C.Nickname;
-                    }
-                    if ((tmpname != tgpname) && (IsTargetProtected(C))) {
-                        let msg = "UBC Import is not possible because " + tgpname + " has enabled the Uwall protection.";
-                        infomsg(msg);
-                    } else {
-                        CharacterNaked(C);
-                        CharacterReleaseNoLock(C);
-                        let appobj = JSON.parse(decodeURI(atob(appinp)));
-                        appobj.forEach(itemstr => {
-                            if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
-                                if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                                    InventoryRemove(C, itemstr[1]);
-                                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                                }
-                            } else if (!(echolevel1.includes(itemstr[1]))) {
-                                InventoryRemove(C, itemstr[1]);
-                                InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                            }
-                        });
-                        CharacterRefresh(C, false);
-                    }
-                }
-                DialogLeave();
-            }
-            if ((MouseX >= 1870) && (MouseX < 1970) && (MouseY >= 240) && (MouseY < 290)) {
-                let appinp = prompt('Please input the awcode (Compatible with BCG).', '');
-                if (C.OnlineSharedSettings.UBC != undefined) {
-                    if ((C.Nickname == '') || (C.Nickname == undefined)) {
-                        tgpname = C.Name;
-                    } else {
-                        tgpname = C.Nickname;
-                    }
-                    if ((tmpname != tgpname) && (IsTargetProtected(C))) {
-                        let msg = "UBC Import is not possible because " + tgpname + " has enabled the Uwall protection.";
-                        infomsg(msg);
-                    } else {
-                        CharacterNaked(C);
-                        CharacterReleaseNoLock(C);
-                        let appobj = JSON.parse(decodeURI(atob(appinp)));
-                        appobj.forEach(itemstr => {
-                            if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
-                                if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
-                                    InventoryRemove(C, itemstr[1]);
-                                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                                }
-                            } else {
-                                InventoryRemove(C, itemstr[1]);
-                                InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
-                            }
-                        });
-                        CharacterRefresh(C, false);
-                    }
-                }
-                DialogLeave();
-            }
-        }
-        return next(args);
-    });
-
-    modApi.hookFunction('AppearanceRun', 4, (args, next) => {
-        AppearanceBackground = wrname;
-        TintsEffect();
-        if (CharacterAppearanceMode == "Wardrobe") {
-            DrawButton(1510, 240, 100, 60, "Export", "#50E992", "", "Full ULTRAbc Export");
-            DrawButton(1630, 240, 100, 60, "Import1", "#50E992", "", "Clothing + Restraints");
-            DrawButton(1750, 240, 100, 60, "Import2", "#50E992", "", "Clothing + Restraints + Cosplay");
-            DrawButton(1870, 240, 100, 60, "Import3", "#50E992", "", "Full ULTRAbc Import");
-            if (nowrbuttons == false) {
-                DrawButton(1150, 25, 90, 90, "", "White", "Icons/Reset.png", "Default background");
-                DrawButton(1150, 130, 90, 90, "", "White", "Icons/Random.png", "Random background");
-                DrawButton(1150, 235, 90, 90, "", "White", "Icons/Explore.png", "Select background");
-            }
-        }
         return next(args);
     });
 
@@ -8405,6 +8208,19 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     function InformationSheetDrawNPCOwnerAndTraits(C) {
         const spacing = 55;
         let currentY = 500;
+		if (C.OnlineSharedSettings != undefined) {
+            if (C.OnlineSharedSettings.cowner1 != undefined) {
+                if (C.OnlineSharedSettings.cowner1 != "") {
+                    DrawTextFit("Collared by " + C.OnlineSharedSettings.cowner1 + " (" + C.OnlineSharedSettings.cowner2 + ")", 550, currentY, 450, "Black", "Gray");
+                    currentY += spacing;
+                    DrawTextFit("for " + C.OnlineSharedSettings.cowner3 + " days", 550, currentY, 450, "Black", "Gray");
+                    const y = currentY;
+                    currentY += spacing;
+                    return currentY;
+                    return;
+                }
+            }
+        }
         if (!C.IsNpc()) return;
         if (!C.IsOwned()) {
             DrawText(`${TextGet("Owner")} ${TextGet("None")}`, 550, currentY, "Black", "Gray");
@@ -8486,6 +8302,19 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
 
     function InformationSheetDrawOwnerInfo(C, currentY) {
         const spacing = 55;
+		if (C.OnlineSharedSettings != undefined) {
+            if (C.OnlineSharedSettings.cowner1 != undefined) {
+                if (C.OnlineSharedSettings.cowner1 != "") {
+                   DrawTextFit("Collared by " + C.OnlineSharedSettings.cowner1 + " (" + C.OnlineSharedSettings.cowner2 + ")", 550, currentY, 450, "Black", "Gray");
+                    currentY += spacing;
+                    DrawTextFit("for " + C.OnlineSharedSettings.cowner3 + " days", 550, currentY, 450, "Black", "Gray");
+                    const y = currentY;
+                    currentY += spacing;
+                    return currentY;
+                    return;
+                }
+            }
+        }
         if (!C.IsOwned()) {
             DrawTextFit(TextGet("Unowned"), 550, currentY, 450, "Black", "Gray");
             currentY += spacing;
@@ -9033,9 +8862,39 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
     }
 
     function UBCsettings() {
+		let mupdate = 0;
         Player.OnlineSharedSettings.UBC = UBCver;
-        Player.OnlineSharedSettings.cname = cname;
-        Player.OnlineSharedSettings.ctitle = ctitle;
+        if (Player.OnlineSharedSettings.cname == undefined) {
+            Player.OnlineSharedSettings.cname = cname;
+        } else {
+            cname = Player.OnlineSharedSettings.cname;
+            mupdate = 1;
+        }
+		if (Player.OnlineSharedSettings.cowner1 == undefined) {
+            Player.OnlineSharedSettings.cowner1 = cowner1;
+        } else {
+            cowner1 = Player.OnlineSharedSettings.cowner1;
+            mupdate = 1;
+        }
+        if (Player.OnlineSharedSettings.cowner2 == undefined) {
+            Player.OnlineSharedSettings.cowner2 = cowner2;
+        } else {
+            cowner2 = Player.OnlineSharedSettings.cowner2;
+            mupdate = 1;
+        }
+        if (Player.OnlineSharedSettings.cowner3 == undefined) {
+            Player.OnlineSharedSettings.cowner3 = cowner3;
+        } else {
+            cowner3 = Player.OnlineSharedSettings.cowner3;
+            mupdate = 1;
+        }
+		if (Player.OnlineSharedSettings.ctitle == undefined) {
+            Player.OnlineSharedSettings.ctitle = ctitle;
+        } else {
+            ctitle = Player.OnlineSharedSettings.ctitle;
+            mupdate = 1;
+        }
+		if (mupdate == 1) M_MOANER_saveControls();
         Player.OnlineSharedSettings.Inmap = false;
         if (Player.OnlineSharedSettings.Tplist == undefined) {
             Player.OnlineSharedSettings.Tplist = [];
@@ -9063,6 +8922,7 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
             Player.RestrictionSettings.BypassNPCPunishments = true;
         }
         UBCrpsk();
+		morebg();
     }
 
     //Room Connections
@@ -9129,7 +8989,6 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         if (node.style && node.style[0] === 'cursor' && node.innerText === 'Close') return node.onclick;
     }
 
-    
     const originalAppendChild = Element.prototype.appendChild;
     Element.prototype.appendChild = function (child) {
         const e = originalAppendChild.call(this, child);
@@ -9144,7 +9003,6 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
         }
         return e;
     };
-
 
     //Stable
     async function StableCarrot() {
@@ -11283,11 +11141,75 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
 
     CommandCombine([{
         Tag: 'bg1',
-        Description: ": adds hidden backgrounds to the selection screen.",
-        Action: () => {
-            morebg();
-            let msg = "You can use more standard backgrounds now. In addition, if you use BCX, the backgrouds added and hidden by this mod are now directly visible.";
-            infomsg(msg);
+        Description: "(number): uses a Bondage College or Bondage Teacher background as custom background.",
+        Action: (args) => {
+            let BCver = GameVersion;
+            if (BCver.includes("Beta")) {
+                let beta1 = BCver.slice(0, 4);
+                let beta2 = beta1.slice(-3);
+                let beta3 = beta2 - 1;
+                BCver = "R" + beta3;
+            }
+            if (args === "") {
+                let msg = "The bg1 command must be followed by a number. List of available backgrounds:\n" +
+                    "BONDAGE COLLEGE\n" +
+                    "1 Art Class - 2, 3 Class - 4 Club - 5 College\n" +
+                    "6 Dorm - 7 Dressing Room - 8 Gym Class\n" +
+                    "9 to 12 Isolation Room - 13 to 16 Kinbaku Club\n" +
+                    "17 to 26 Library - 27, 28 Lockers\n" +
+                    "29 Running Track - 30, 31 Showers - 32 Theater\n" +
+                    "BONDAGE TEACHER\n" +
+                    "33, 34 Beach - 35, 36 Briefcase - 37 Bullseye\n" +
+                    "38, 39 Class - 40 College - 41 Office";
+                infomsg(msg);
+            } else {
+                let bg = "";
+                let url1 = "https://www.bondage-europe.com/" + BCver;
+                let url2 = "https://gitgud.io/BondageProjects/Bondage-College/-/raw/master/Backgrounds/";
+                let url3 = "https://gitgud.io/BondageProjects/bondage-teacher/-/raw/master/";
+                if (args == 1) bg = url1 + "/C004_ArtClass/Intro/Background.jpg";
+                if (args == 2) bg = url1 + "/C001_BeforeClass/Intro/Background2.jpg";
+                if (args == 3) bg = url1 + "/C999_Common/Quiz/Backgrounds/Classroom.jpg";
+                if (args == 4) bg = url1 + "/C013_BondageClub/Intro/Background.jpg";
+                if (args == 5) bg = url1 + "/C000_Intro/Intro/Background.jpg";
+                if (args == 6) bg = url1 + "/C012_AfterClass/Intro/Background.jpg";
+                if (args == 7) bg = url1 + "/C008_DramaClass/DressingRoom/Background.jpg";
+                if (args == 8) bg = url1 + "/C005_GymClass/Intro/Background.jpg";
+                if (args == 9) bg = url1 + "/C006_Isolation/Intro/Background.jpg";
+                if (args == 10) bg = url1 + "/C006_Isolation/IsolationRoom/C006_CutRope_3_0.jpg";
+                if (args == 11) bg = url1 + "/C006_Isolation/IsolationRoom/C006_CutRope_3_1.jpg";
+                if (args == 12) bg = url1 + "/C006_Isolation/IsolationRoom/C006_CutRope_3_2.jpg";
+                if (args == 13) bg = url1 + "/C101_KinbakuClub/ClubRoom1/ClubRoom1Arrows.jpg";
+                if (args == 14) bg = url1 + "/C101_KinbakuClub/ClubRoom2/ClubRoom2Arrows.jpg";
+                if (args == 15) bg = url1 + "/C101_KinbakuClub/ClubRoom3/ClubRoom3Arrows.jpg";
+                if (args == 16) bg = url1 + "/C101_KinbakuClub/ClubRoom4/ClubRoom4.jpg";
+                if (args == 17) bg = url1 + "/C009_Library/Library/001.jpg";
+                if (args == 18) bg = url1 + "/C009_Library/Library/002.jpg";
+                if (args == 19) bg = url1 + "/C009_Library/Library/003.jpg";
+                if (args == 20) bg = url1 + "/C009_Library/Library/004.jpg";
+                if (args == 21) bg = url1 + "/C009_Library/Library/005.jpg";
+                if (args == 22) bg = url1 + "/C009_Library/Library/006.jpg";
+                if (args == 23) bg = url1 + "/C009_Library/Library/007.jpg";
+                if (args == 24) bg = url1 + "/C009_Library/Library/008.jpg";
+                if (args == 25) bg = url1 + "/C009_Library/Library/009.jpg";
+                if (args == 26) bg = url1 + "/C009_Library/Library/010.jpg";
+                if (args == 27) bg = url1 + "/C010_Revenge/Intro/BackgroundAmandaSarah.jpg";
+                if (args == 28) bg = url1 + "/C010_Revenge/Intro/BackgroundSidneyJennifer.jpg";
+                if (args == 29) bg = url1 + "/C999_Common/Fights/Backgrounds/RunningTrack.jpg";
+                if (args == 30) bg = url2 + "Shower1.jpg";
+                if (args == 31) bg = url2 + "Shower2.jpg";
+                if (args == 32) bg = url1 + "/C008_DramaClass/Theater/Background.jpg";
+                if (args == 33) bg = url3 + "Screen/Character/Picture/Background/MiaBeach1.jpg";
+                if (args == 34) bg = url3 + "Screen/Character/Picture/Background/TeacherBeach2.jpg";
+                if (args == 35) bg = url3 + "Screen/Intro/FirstBossMeeting/Background/BriefcaseInside.jpg";
+                if (args == 36) bg = url3 + "Screen/Intro/FirstBossMeeting/Background/BriefcaseOutside.jpg";
+                if (args == 37) bg = url3 + "Image/Cheat/Bullseye.png";
+                if (args == 38) bg = url3 + "Image/Background/TeacherClassStandingAlone.jpg";
+                if (args == 39) bg = url3 + "Image/Background/TeacherClassStandingAloneCuffed.jpg";
+                if (args == 40) bg = url3 + "Image/Background/TeacherCollegeSingle.jpg";
+                if (args == 41) bg = url3 + "Screen/Intro/FirstBossMeeting/Background/TeacherLookOffice.jpg";
+                if ((args > 0) && (args < 42)) ChatAdminRoomCustomizationCommand("Image", bg);
+            }
         }
     }])
 
@@ -11421,80 +11343,6 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                     let ChatCreateBackgroundSelect = bg;
                     updateBackground(bg);
                 }
-            }
-        }
-    }])
-
-    CommandCombine([{
-        Tag: 'bg3',
-        Description: "(number): uses a Bondage College or Bondage Teacher background as custom background.",
-        Action: (args) => {
-            let BCver = GameVersion;
-            if (BCver.includes("Beta")) {
-                let beta1 = BCver.slice(0, 4);
-                let beta2 = beta1.slice(-3);
-                let beta3 = beta2 - 1;
-                BCver = "R" + beta3;
-            }
-            if (args === "") {
-                let msg = "The bg3 command must be followed by a number. List of Bondage College backgrounds:\n" +
-                    "BONDAGE COLLEGE\n" +
-                    "1 Art Class - 2, 3 Class - 4 Club - 5 College\n" +
-                    "6 Dorm - 7 Dressing Room - 8 Gym Class\n" +
-                    "9 to 12 Isolation Room - 13 to 16 Kinbaku Club\n" +
-                    "17 to 26 Library - 27, 28 Lockers\n" +
-                    "29 Running Track - 30, 31 Showers - 32 Theater\n" +
-                    "BONDAGE TEACHER\n" +
-                    "33, 34 Beach - 35, 36 Briefcase - 37 Bullseye\n" +
-                    "38, 39 Class - 40 College - 41 Office";
-                infomsg(msg);
-            } else {
-                let bg = "";
-                let url1 = "https://www.bondage-europe.com/" + BCver;
-                let url2 = "https://gitgud.io/BondageProjects/Bondage-College/-/raw/master/Backgrounds/";
-                let url3 = "https://gitgud.io/BondageProjects/bondage-teacher/-/raw/master/";
-                if (args == 1) bg = url1 + "/C004_ArtClass/Intro/Background.jpg";
-                if (args == 2) bg = url1 + "/C001_BeforeClass/Intro/Background2.jpg";
-                if (args == 3) bg = url1 + "/C999_Common/Quiz/Backgrounds/Classroom.jpg";
-                if (args == 4) bg = url1 + "/C013_BondageClub/Intro/Background.jpg";
-                if (args == 5) bg = url1 + "/C000_Intro/Intro/Background.jpg";
-                if (args == 6) bg = url1 + "/C012_AfterClass/Intro/Background.jpg";
-                if (args == 7) bg = url1 + "/C008_DramaClass/DressingRoom/Background.jpg";
-                if (args == 8) bg = url1 + "/C005_GymClass/Intro/Background.jpg";
-                if (args == 9) bg = url1 + "/C006_Isolation/Intro/Background.jpg";
-                if (args == 10) bg = url1 + "/C006_Isolation/IsolationRoom/C006_CutRope_3_0.jpg";
-                if (args == 11) bg = url1 + "/C006_Isolation/IsolationRoom/C006_CutRope_3_1.jpg";
-                if (args == 12) bg = url1 + "/C006_Isolation/IsolationRoom/C006_CutRope_3_2.jpg";
-                if (args == 13) bg = url1 + "/C101_KinbakuClub/ClubRoom1/ClubRoom1Arrows.jpg";
-                if (args == 14) bg = url1 + "/C101_KinbakuClub/ClubRoom2/ClubRoom2Arrows.jpg";
-                if (args == 15) bg = url1 + "/C101_KinbakuClub/ClubRoom3/ClubRoom3Arrows.jpg";
-                if (args == 16) bg = url1 + "/C101_KinbakuClub/ClubRoom4/ClubRoom4.jpg";
-                if (args == 17) bg = url1 + "/C009_Library/Library/001.jpg";
-                if (args == 18) bg = url1 + "/C009_Library/Library/002.jpg";
-                if (args == 19) bg = url1 + "/C009_Library/Library/003.jpg";
-                if (args == 20) bg = url1 + "/C009_Library/Library/004.jpg";
-                if (args == 21) bg = url1 + "/C009_Library/Library/005.jpg";
-                if (args == 22) bg = url1 + "/C009_Library/Library/006.jpg";
-                if (args == 23) bg = url1 + "/C009_Library/Library/007.jpg";
-                if (args == 24) bg = url1 + "/C009_Library/Library/008.jpg";
-                if (args == 25) bg = url1 + "/C009_Library/Library/009.jpg";
-                if (args == 26) bg = url1 + "/C009_Library/Library/010.jpg";
-                if (args == 27) bg = url1 + "/C010_Revenge/Intro/BackgroundAmandaSarah.jpg";
-                if (args == 28) bg = url1 + "/C010_Revenge/Intro/BackgroundSidneyJennifer.jpg";
-                if (args == 29) bg = url1 + "/C999_Common/Fights/Backgrounds/RunningTrack.jpg";
-                if (args == 30) bg = url2 + "Shower1.jpg";
-                if (args == 31) bg = url2 + "Shower2.jpg";
-                if (args == 32) bg = url1 + "/C008_DramaClass/Theater/Background.jpg";
-                if (args == 33) bg = url3 + "Screen/Character/Picture/Background/MiaBeach1.jpg";
-                if (args == 34) bg = url3 + "Screen/Character/Picture/Background/TeacherBeach2.jpg";
-                if (args == 35) bg = url3 + "Screen/Intro/FirstBossMeeting/Background/BriefcaseInside.jpg";
-                if (args == 36) bg = url3 + "Screen/Intro/FirstBossMeeting/Background/BriefcaseOutside.jpg";
-                if (args == 37) bg = url3 + "Image/Cheat/Bullseye.png";
-                if (args == 38) bg = url3 + "Image/Background/TeacherClassStandingAlone.jpg";
-                if (args == 39) bg = url3 + "Image/Background/TeacherClassStandingAloneCuffed.jpg";
-                if (args == 40) bg = url3 + "Image/Background/TeacherCollegeSingle.jpg";
-                if (args == 41) bg = url3 + "Screen/Intro/FirstBossMeeting/Background/TeacherLookOffice.jpg";
-                if ((args > 0) && (args < 42)) ChatAdminRoomCustomizationCommand("Image", bg);
             }
         }
     }])
@@ -11968,6 +11816,99 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                 this.ColorTarget10 = undefined;
                 this.ColorTargetNameCustom = undefined;
             }
+        }
+    }])
+
+	CommandCombine([{
+        Tag: 'cowner',
+        Description: "(member number) (owning days) (owner name): sets a custom owner, that will be displayed in your profile.",
+        Action: (args, originalInput) => {
+            args = (args || "").trim();
+            originalInput = originalInput || "";
+            if (args === "") {
+                let msg = "The cowner command must be followed by the member number of the wished owner, the number of days corresponding to this owning, and the name of the custom owner.\n" +
+                    "This custom owner can be any player of the game, even yourself or a sub that you own.\n" +
+                    "The number of owning days can't exceed the number of days you are in the game.\n" +
+                    "Maximum 20 characters for the name (spaces included)!\n" +
+                    "It will work only between UBC users and replace the official info in the profile.\n" +
+                    "Use None as name to go back to a profile without custom owner.";
+                infomsg(msg);
+                return;
+            }
+            const m = originalInput.match(/^\/?cowner\s+(\d+)\s+(\d+)\s+([\s\S]+)$/i);
+            let number, days, nameRaw;
+            if (m) {
+                number = parseInt(m[1], 10);
+                days = parseInt(m[2], 10);
+                nameRaw = m[3].trim();
+            } else {
+                const parts = args.split(/\s+/);
+                if (parts.length < 3) {
+                    infomsg("Usage: cowner <memberNumber> <days> <name> (name can contain spaces). Use 'None' as name to delete custom owner.");
+                    return;
+                }
+                number = parseInt(parts[0], 10);
+                days = parseInt(parts[1], 10);
+                nameRaw = parts.slice(2).join(' ').trim();
+            }
+            if (!Number.isInteger(number) || number <= 0) {
+                infomsg("Invalid member number. It must be a positive integer.");
+                return;
+            }
+            if (!Number.isInteger(days) || days <= 0) {
+                infomsg("Invalid days. It must be a positive integer.");
+                return;
+            }
+            let gamedays = CommonFormatDurationRange(CurrentTime, Player.Creation, {
+                showFull: true,
+                includeYears: false,
+                includeMonths: false,
+                includeDays: true
+            });
+            let match = gamedays && gamedays.match(/\d+/);
+            let gameDaysNumber = match ? parseInt(match[0], 10) : 0;
+            if (days > gameDaysNumber) {
+                infomsg("The number of owning days can't exceed the number of days you are in the game (" + gameDaysNumber + ").");
+                return;
+            }
+            const allowedNameRe = /^[\p{L}\p{N}\p{Zs}'-]+$/u;
+            if (!nameRaw || nameRaw.length === 0) {
+                infomsg("Name cannot be empty. Use 'None' to remove the custom owner.");
+                return;
+            }
+            if (nameRaw.length > 20) {
+                infomsg("Maximum 20 characters for the name (spaces included)!");
+                return;
+            }
+            const nameLower = nameRaw.toLowerCase();
+            let nameIsValid = false;
+            try {
+                nameIsValid = allowedNameRe.test(nameRaw) || (nameLower === "none");
+            } catch (e) {
+                nameIsValid = (/^[A-Za-z0-9 '\-]+$/).test(nameRaw) || (nameLower === "none");
+            }
+            if (!nameIsValid) {
+                infomsg("Name contains invalid characters. Allowed: letters, numbers, spaces, apostrophe (') and hyphen (-).");
+                return;
+            }
+            if (nameRaw === "None") {
+                cowner1 = "";
+                cowner2 = 0;
+                cowner3 = 0;
+                infomsg("Custom owner deleted");
+            } else {
+                cowner1 = nameRaw;
+                cowner2 = number;
+                cowner3 = days;
+                infomsg("Custom owner created or modified");
+            }
+            M_MOANER_saveControls();
+            Player.OnlineSharedSettings.cowner1 = cowner1;
+            Player.OnlineSharedSettings.cowner2 = cowner2;
+            Player.OnlineSharedSettings.cowner3 = cowner3;
+            ServerAccountUpdate.QueueData({
+                 OnlineSharedSettings: Player.OnlineSharedSettings
+            });      
         }
     }])
 
@@ -16041,9 +15982,8 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
             if (args === "admin") {
                 let msg = "Admin commands\n" +
                     "<b>/autokick</b> = toggles on auto kick for 0 day old accounts.\n" +
-                    "<b>/bg1</b> = adds hidden backgrounds to the selection screen.\n" +
-                    "<b>/bg2</b> (number) = uses a Bondage Brawl background as standard background. /bg2 to get the list.\n" +
-                    "<b>/bg3</b> (number) = uses a Bondage College background as custom background. /bg3 to get the list.";
+                    "<b>/bg1</b> (number) = uses a Bondage College/Teacher background as custom background. /bg1 to get the list.\n" +
+                    "<b>/bg2</b> (number) = uses a Bondage Brawl background as standard background. /bg2 to get the list.";
                 infomsg(msg);
             }
             if (args === "bondage") {
@@ -16064,6 +16004,7 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
             if (args === "character") {
                 let msg = "Character commands - * = more info when using\n" +
                     "<b>/cname</b> (custom name) = creates a custom name. *\n" +
+					"<b>/cowner</b> (member number) (owning days) (owner name) = sets a custom owner. *\n" +
                     "<b>/ctitle</b> (custom title) = creates a custom title. *\n" +
                     "<b>/difficulty</b> (number) = changes game difficulty. *\n" +
                     "<b>/maxstatistics</b> = gives max statistics.\n" +
@@ -16093,6 +16034,10 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                     "<b>/naked</b> (target) = removes clothes.\n" +
                     "<b>/outfit</b> (options) = restores/saves/loads outfit (including restraints). *\n" +
                     "<b>/underwear</b> (target) = changes underwear.\n" +
+				    "<b>/wexport</b> (target) = fully exports outfit in UBC/BCG format.\n" +
+                    "<b>/wimport1</b> (target) = imports clothing + restraints in UBC/BCG format.\n" +
+                    "<b>/wimport2</b> (target) = imports clothing + restraints + cosplay in UBC/BCG format.\n" +
+                    "<b>/wimport3</b> (target) = fully imports outfit in UBC/BCG format.\n" +
                     "<b>/wrobe</b> (target) = fully opens target wardrobe.";
                 infomsg(msg);
             }
@@ -16801,6 +16746,161 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
             SkillSetModifier(Player, "Willpower", -5, 3600000);
             let msg = "You feel all your skills weakened. Changes can be seen in information panel.";
             infomsg(msg);
+        }
+    }])
+
+	CommandCombine([{
+        Tag: 'wexport',
+        Description: "(target): fully exports outfit in UBC/BCG format.",
+        Action: (args) => {
+            let target = Player;
+            if (args != "") target = TargetSearch(args);
+            if (!target) return;
+            if (target != Player) {
+                if (target.AllowItem == false) return;
+                if (target.OnlineSharedSettings.UBC == undefined) return;
+                tgpname = getNickname(target);
+                if (IsTargetProtected(target)) {
+                    let msg = umsg1 + tgpname + umsg2;
+                    infomsg(msg);
+                    return;
+                }
+            }
+            let appall = new Array();
+            target.Appearance.forEach(item => {
+                let app = new Array();
+                app.push(item.Asset.Name);
+                app.push(item.Asset.Group.Name);
+                app.push(item.Color);
+                app.push(item.Difficulty);
+                app.push(item.Craft);
+                app.push(false);
+                //Do not remove this line. It is for the compatibility with bcg.
+                appall.push(app);
+            });
+            ChatRoomSendLocal(
+                "<p style='background-color:#5fbd7a'>ULTRAbc: awcode:</p>\n" +
+                    btoa(encodeURI(JSON.stringify(appall)))
+            );
+        }
+    }])
+
+     CommandCombine([{
+        Tag: 'wimport1',
+        Description: "(target): imports clothing + restraints in UBC/BCG format.",
+        Action: (args) => {
+            let target = Player;
+            if (args != "") target = TargetSearch(args);
+            if (!target) return;
+            if (target != Player) {
+                if (target.AllowItem == false) return;
+                if (target.OnlineSharedSettings.UBC == undefined) return;
+                tgpname = getNickname(target);
+                if (IsTargetProtected(target)) {
+                    let msg = umsg1 + tgpname + umsg2;
+                    infomsg(msg);
+                    return;
+                }
+            }
+            let appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+            C = target;
+            for (let A = C.Appearance.length - 1; A >= 0; A--)
+                if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
+                    if (!(echolevel2.includes(C.Appearance[A].Asset.Group.Name))) {
+                        InventoryRemove(C, C.Appearance[A].Asset.Group.Name);
+                    }
+                }
+            CharacterReleaseNoLock(C);
+            let appobj = JSON.parse(decodeURI(atob(appinp)));
+            appobj.forEach(itemstr => {
+                if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
+                    if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
+                        InventoryRemove(C, itemstr[1]);
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                    }
+                } else if (!(echolevel2.includes(itemstr[1]))) {
+                    InventoryRemove(C, itemstr[1]);
+                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                }
+            });
+            ChatRoomCharacterUpdate(C);
+            ChatRoomSetTarget(-1);
+        }
+    }])
+
+    CommandCombine([{
+        Tag: 'wimport2',
+        Description: "(target): imports clothing + restraints + cosplay in UBC/BCG format.",
+        Action: (args) => {
+            let target = Player;
+            if (args != "") target = TargetSearch(args);
+            if (!target) return;
+            if (target != Player) {
+                if (target.AllowItem == false) return;
+                if (target.OnlineSharedSettings.UBC == undefined) return;
+                tgpname = getNickname(target);
+                if (IsTargetProtected(target)) {
+                    let msg = umsg1 + tgpname + umsg2;
+                    infomsg(msg);
+                    return;
+                }
+            }
+            let appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+            C = target;
+            CharacterNaked(C);
+            CharacterReleaseNoLock(C);
+            let appobj = JSON.parse(decodeURI(atob(appinp)));
+            appobj.forEach(itemstr => {
+                if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
+                    if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
+                        InventoryRemove(C, itemstr[1]);
+                         InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                    }
+                } else if (!(echolevel1.includes(itemstr[1]))) {
+                    InventoryRemove(C, itemstr[1]);
+                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                }
+            });
+            ChatRoomCharacterUpdate(C);
+            ChatRoomSetTarget(-1);
+        }
+    }])
+
+    CommandCombine([{
+        Tag: 'wimport3',
+        Description: "(target): fully imports outfit in UBC/BCG format.",
+        Action: (args) => {
+            let target = Player;
+            if (args != "") target = TargetSearch(args);
+            if (!target) return;
+            if (target != Player) {
+                if (target.AllowItem == false) return;
+                if (target.OnlineSharedSettings.UBC == undefined) return;
+                tgpname = getNickname(target);
+                if (IsTargetProtected(target)) {
+                    let msg = umsg1 + tgpname + umsg2;
+                    infomsg(msg);
+                    return;
+                }
+            }
+            let appinp = prompt('Please input the awcode (Compatible with BCG).', '');
+            C = target;
+            CharacterNaked(C);
+            CharacterReleaseNoLock(C);
+            let appobj = JSON.parse(decodeURI(atob(appinp)));
+            appobj.forEach(itemstr => {
+                if ((InventoryGet(C, itemstr[1]) != null) && (InventoryGet(C, itemstr[1]).Asset.AllowLock == true)) {
+                    if (((InventoryGet(C, itemstr[1]).Property != null) && (InventoryGet(C, itemstr[1]).Property.LockedBy == null)) || (InventoryGet(C, itemstr[1]).Property == null)) {
+                        InventoryRemove(C, itemstr[1]);
+                        InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                    }
+                } else {
+                    InventoryRemove(C, itemstr[1]);
+                    InventoryWear(C, itemstr[0], itemstr[1], itemstr[2], itemstr[3], -1, itemstr[4]);
+                }
+            });
+            ChatRoomCharacterUpdate(C);
+            ChatRoomSetTarget(-1);
         }
     }])
 
