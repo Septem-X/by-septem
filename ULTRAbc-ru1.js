@@ -14234,7 +14234,7 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                         let msg = umsg1 + tgpname + umsg2;
                         infomsg(msg);
                     } else {
-                        let msg = "Магические лазеры применяют случайную одежду и путы на теле " + tmpname + .";
+                        let msg = "Магические лазеры применяют случайную одежду и путы на теле " + tmpname + ".";
                         targetMessage(Trandomize, msg, 2);
                         CharacterNaked(target);
                         CharacterRandomUnderwear(target);
