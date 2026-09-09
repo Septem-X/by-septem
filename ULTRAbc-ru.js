@@ -2207,7 +2207,7 @@ var bcModSDK=function(){"use strict";const o="1.2.0";function e(o){alert("Mod ER
                 DrawText("ULTRAbc " + UBCver, 1665, 525, "Black", "Gray");
                 DrawButton(1500, 550, 315, 90, "", "White", "", "Ссылка на Icons8");
                 DrawImageResize(IMAGES.LOGO, 1510, 565, 60, 60);
-                DrawTextFit(Иконка от Icons8", 1690, 598, 308, "Black");
+                DrawTextFit("Иконка от Icons8", 1690, 598, 308, "Black");
                 DrawButton(1500, 655, 315, 90, "", "White", "", "Открыть журнал изменений UBC на GitHub");
                 DrawImageResize("Icons/Changelog.png", 1510, 670, 60, 60);
                 DrawTextFit("UBC Изменения", 1685, 703, 308, "Black");
